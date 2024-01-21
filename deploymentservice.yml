@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: tars-deployment
+  name: ekart
 spec:
   selector:
     matchLabels:
-      app: tars
+      app: ekart
   replicas: 2 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
-        app: tars
+        app: ekart
     spec:
       containers:
-        - name: tars
+        - name: ekart
           image: mtosin23/tars-app:latest # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  name: tars-svc
+  name: ekart-ssvc
 spec:
   selector:
-    app: tars
+    app: ekart
   ports:
     - protocol: "TCP"
       port: 8070 # The port that the service is running on in the cluster
